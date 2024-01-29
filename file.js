@@ -1,3 +1,5 @@
+// Temperature conversion functions
+
 function celsiusToFahrenheit(celsius) {
     return (celsius * 9/5) + 32;
 }
@@ -166,6 +168,8 @@ function réaumurToDelisle(réaumur) {
     return 80 - (réaumur * 15/8);
 }
 
+// Temperature converter function
+
 function temperatureConverter() {
     console.log("Temperature Converter");
 
@@ -175,62 +179,201 @@ function temperatureConverter() {
     let outputScale = prompt("Enter the output scale (C, F, K, R, N, D, Re):").toUpperCase();
 
     // Perform conversion based on user input
+    let convertedTemperature = convertTemperature(temperature, inputScale, outputScale);
+
+    // Display the result
+    console.log(`${temperature} ${inputScale} is equal to ${convertedTemperature} ${outputScale}.`);
+}
+
+// Temperature conversion helper function
+
+function convertTemperature(temperature, inputScale, outputScale) {
     let convertedTemperature;
+
     switch (inputScale) {
         case 'C':
-            convertedTemperature = temperature;
+            convertedTemperature = celsiusConversion(temperature, outputScale);
             break;
         case 'F':
-            convertedTemperature = fahrenheitToCelsius(temperature);
+            convertedTemperature = fahrenheitConversion(temperature, outputScale);
             break;
         case 'K':
-            convertedTemperature = kelvinToCelsius(temperature);
+            convertedTemperature = kelvinConversion(temperature, outputScale);
             break;
         case 'R':
-            convertedTemperature = rankineToCelsius(temperature);
+            convertedTemperature = rankineConversion(temperature, outputScale);
             break;
         case 'N':
-            convertedTemperature = newtonToCelsius(temperature);
+            convertedTemperature = newtonConversion(temperature, outputScale);
             break;
         case 'D':
-            convertedTemperature = delisleToCelsius(temperature);
+            convertedTemperature = delisleConversion(temperature, outputScale);
             break;
         case 'RE':
-            convertedTemperature = réaumurToCelsius(temperature);
+            convertedTemperature = réaumurConversion(temperature, outputScale);
             break;
         default:
             console.log("Invalid input scale. Please enter C, F, K, R, N, D, or Re.");
             return;
     }
 
+    return convertedTemperature;
+}
+
+// Individual temperature conversion functions
+
+function celsiusConversion(temperature, outputScale) {
     switch (outputScale) {
         case 'C':
-            // Do nothing, already in Celsius
-            break;
+            return temperature;
         case 'F':
-            convertedTemperature = celsiusToFahrenheit(convertedTemperature);
-            break;
+            return celsiusToFahrenheit(temperature);
         case 'K':
-            convertedTemperature = celsiusToKelvin(convertedTemperature);
-            break;
+            return celsiusToKelvin(temperature);
         case 'R':
-            convertedTemperature = celsiusToRankine(convertedTemperature);
-            break;
+            return celsiusToRankine(temperature);
         case 'N':
-            convertedTemperature = celsiusToNewton(convertedTemperature);
-            break;
+            return celsiusToNewton(temperature);
         case 'D':
-            convertedTemperature = celsiusToDelisle(convertedTemperature);
-            break;
+            return celsiusToDelisle(temperature);
         case 'RE':
-            convertedTemperature = celsiusToRéaumur(convertedTemperature);
-            break;
+            return celsiusToRéaumur(temperature);
         default:
             console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
             return;
     }
+}
 
-    console.log(`${temperature} ${inputScale} is equal to ${convertedTemperature} ${outputScale}.`);
+function fahrenheitConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return fahrenheitToCelsius(temperature);
+        case 'F':
+            return temperature;
+        case 'K':
+            return fahrenheitToKelvin(temperature);
+        case 'R':
+            return fahrenheitToRankine(temperature);
+        case 'N':
+            return fahrenheitToNewton(temperature);
+        case 'D':
+            return fahrenheitToDelisle(temperature);
+        case 'RE':
+            return fahrenheitToRéaumur(temperature);
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
+}
+
+function kelvinConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return kelvinToCelsius(temperature);
+        case 'F':
+            return kelvinToFahrenheit(temperature);
+        case 'K':
+            return temperature;
+        case 'R':
+            return kelvinToRankine(temperature);
+        case 'N':
+            return kelvinToNewton(temperature);
+        case 'D':
+            return kelvinToDelisle(temperature);
+        case 'RE':
+            return kelvinToRéaumur(temperature);
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
+}
+
+function rankineConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return rankineToCelsius(temperature);
+        case 'F':
+            return rankineToFahrenheit(temperature);
+        case 'K':
+            return rankineToKelvin(temperature);
+        case 'R':
+            return temperature;
+        case 'N':
+            return rankineToNewton(temperature);
+        case 'D':
+            return rankineToDelisle(temperature);
+        case 'RE':
+            return rankineToRéaumur(temperature);
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
+}
+
+function newtonConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return newtonToCelsius(temperature);
+        case 'F':
+            return newtonToFahrenheit(temperature);
+        case 'K':
+            return newtonToKelvin(temperature);
+        case 'R':
+            return newtonToRankine(temperature);
+        case 'N':
+            return temperature;
+        case 'D':
+            return newtonToDelisle(temperature);
+        case 'RE':
+            return newtonToRéaumur(temperature);
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
+}
+
+function delisleConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return delisleToCelsius(temperature);
+        case 'F':
+            return delisleToFahrenheit(temperature);
+        case 'K':
+            return delisleToKelvin(temperature);
+        case 'R':
+            return delisleToRankine(temperature);
+        case 'N':
+            return delisleToNewton(temperature);
+        case 'D':
+            return temperature;
+        case 'RE':
+            return delisleToRéaumur(temperature);
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
+}
+
+function réaumurConversion(temperature, outputScale) {
+    switch (outputScale) {
+        case 'C':
+            return réaumurToCelsius(temperature);
+        case 'F':
+            return réaumurToFahrenheit(temperature);
+        case 'K':
+            return réaumurToKelvin(temperature);
+        case 'R':
+            return réaumurToRankine(temperature);
+        case 'N':
+            return réaumurToNewton(temperature);
+        case 'D':
+            return réaumurToDelisle(temperature);
+        case 'RE':
+            return temperature;
+        default:
+            console.log("Invalid output scale. Please enter C, F, K, R, N, D, or Re.");
+            return;
+    }
 }
 
 // Call the temperatureConverter function
